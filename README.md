@@ -8,7 +8,7 @@ This software is licensed under the [Apache License, Version 2.0](http://www.apa
 
 ## Documentation
 
-For comprehensive details on developing and integrating dashlets with enaio® webclient, refer to our official [Modal Dialog API documentation](https://help.optimal-systems.com/enaio_develop/x/XQCxB).
+For comprehensive details on developing and integrating custom modal dialogs into enaio® webclient, refer to our official [Modal Dialog API documentation](https://help.optimal-systems.com/enaio_develop/x/XQCxB).
 
 ## Introduction
 
@@ -16,7 +16,7 @@ Starting from version 11.10 FINAL, enaio® webclient has introduced the ability 
 
 Utilize the formHelper method "openModalDialog" to launch a custom modal dialog. Provide the URL, and optionally its title and size, as parameters.
 
-These modal dialogs function like a webpage inside an iFrame, inclusive of the inherent browser navigation. Craft your tailored solutions using HTML5, JavaScript, and CSS. Once created, they can be made available via the enaio® service manager. Ensure any backend services, like DMS service for enaio®, enaio® appconnector, or enaio® documentviewer, are located behind the enaio® gateway to comply with the Same-Origin Policy.
+These modal dialogs function like a webpage inside an iframe, inclusive of the inherent browser navigation. Craft your tailored solutions using HTML5, JavaScript, and CSS. Once created, they can be made available via the enaio® service manager. Ensure any backend services, like DMS service for enaio®, enaio® appconnector, or enaio® documentviewer, are located behind the enaio® gateway to comply with the Same-Origin Policy.
 
 To bridge communication between a modal dialog and the enaio® webclient, we offer the Modal Dialog API. It's enriched with special events and methods that enhance information exchange and interaction.
 
@@ -26,7 +26,7 @@ The enaio® webclient operates based on events. Here's a snapshot of the availab
 
 ### onInit
 
-Triggered whenever the modal dialog is made visible. It conveys the current state, allowing the dashlet to initialize itself swiftly. Dive deeper into the [documentation](https://help.optimal-systems.com/enaio_develop/x/cQCxB) for exhaustive details on this event.
+Triggered whenever the modal dialog is made visible. It conveys the current state, allowing the modal dialog to swiftly initialize itself. Dive deeper into the [documentation](https://help.optimal-systems.com/enaio_develop/x/cQCxB) for exhaustive details on this event.
 
 ## Methods
 
