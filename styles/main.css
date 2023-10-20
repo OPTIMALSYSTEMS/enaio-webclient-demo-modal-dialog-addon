@@ -1,0 +1,301 @@
+@font-face {
+  font-family: "enaioOpenSans";
+  src: url(./font/OpenSans-Regular-webfont.eot);
+  /* IE9 Compat Modes */
+  src: url(./font/OpenSans-Regular-webfont.eot?#iefix) format("embedded-opentype"),
+    /* IE6-IE8 */
+    url(./font/OpenSans-Regular-webfont.woff) format("woff"),
+    /* Pretty Modern Browsers */
+    url(./font/OpenSans-Regular-webfont.ttf) format("truetype"),
+    /* Safari, Android, iOS */
+    url(./font/OpenSans-Regular-webfont.svg#robotolight) format("svg");
+  /* Legacy iOS */
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --enaio-color-gradient1: #1a9ed4;
+  --enaio-color-gradient2: #0092e1;
+  --enaio-color-gradient3: #0083cb;
+  --color-border-defaultNew: #bbb;
+  --color-accent-gray: #f1f1f1;
+  --color-outline-main: #777;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: "enaioOpenSans", Arial, Sans-Serif;
+  font-size: 12.5px;
+  font-style: normal;
+  color: var(--color-outline-main);
+  font-weight: 400;
+}
+
+.header-banner {
+  background-color: var(--enaio-color-gradient3);
+  color: var(--white);
+  display: flex !important;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-banner .header-banner-text {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+  text-align: right;
+}
+
+.header-banner-text span {
+  color: var(--white);
+}
+
+.main-container,
+.header-container,
+.header-banner,
+.section-container {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.main-container {
+  background: var(--white);
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-container {
+  display: block;
+  box-sizing: border-box;
+  padding: 16px 32px 32px 32px;
+}
+
+.section-container .section-heading {
+  font-weight: bolder;
+  font-size: 16px;
+  margin: 16px 0 0 0;
+}
+
+.section-container section {
+  margin-bottom: 32px;
+}
+
+.section-container .section-text {
+  padding: 16px 0;
+  margin: 0;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.content p {
+  margin: 16px 0;
+}
+
+.content-button-container {
+  display: flex;
+  flex-direction: column;
+  /* Stack items vertically */
+}
+
+.fields-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.fields-container>div {
+  margin-right: 10px;
+  /* Adjust margin as needed */
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  /* Align button to the right */
+}
+
+.content .content-link {
+  color: var(--enaio-color-gradient1);
+}
+
+.inner-button,
+.clear-button {
+  height: 32px;
+  background-color: var(--enaio-color-gradient3);
+  border: transparent;
+  color: var(--white);
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 0 0 #dedede;
+  transition: background-color 0.2s ease-in-out;
+  display: inline-block;
+  padding: 0 16px;
+  margin-right: 8px;
+}
+
+.inner-button:hover {
+  background-color: var(--enaio-color-gradient1);
+}
+
+.clear-button {
+  background-color: var(--white);
+  border: 1px solid var(--color-border-defaultNew);
+  color: var(--color-outline-main);
+}
+
+.clear-button:hover {
+  background-color: var(--enaio-color-gradient1);
+  color: var(--white);
+}
+
+.collapsible {
+  background-color: var(--white);
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  padding-left: 0;
+}
+
+.active,
+.collapsible:hover {
+  background-color: var(--white);
+}
+
+legend {
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 40px;
+  border-bottom: 1px solid #bbb;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.collapsible:after {
+  content: "˄";
+}
+
+legend.active .collapsible:after {
+  content: "˅";
+}
+
+.selected-objects,
+.bolder,
+.subheading {
+  font-weight: 800;
+}
+
+.notice {
+  margin: 6px 0px 22px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* Collapsible Sections */
+.collapsible-section {
+  margin-bottom: 32px;
+  border: 1px solid var(--color-border-defaultNew);
+  /* Add a border to create distinct blocks */
+  border-radius: 4px;
+  /* Optional: Rounded corners for aesthetics */
+  display: flex;
+  /* Use flexbox to position items */
+  flex-direction: column;
+  /* Stack children vertically */
+}
+
+.section-header {
+  background-color: var(--enaio-color-gradient3);
+  color: var(--white);
+  padding: 8px;
+  display: flex;
+  /* Use flexbox to position items */
+  justify-content: space-between;
+  /* Space between items to move the icon to the right */
+  align-items: center;
+  /* Center vertically */
+  border-top-left-radius: 4px;
+  /* Match the border radius of the section */
+  border-top-right-radius: 4px;
+  /* Match the border radius of the section */
+}
+
+.method-title {
+  margin: 0;
+  font-size: 18px;
+  color: var(--white);
+}
+
+.collapsible-icon {
+  font-size: 18px;
+  color: var(--white);
+}
+
+.collapsible-section .section-header .collapsible-icon {
+  transition: transform 0.3s ease-in-out;
+  /* Add transition for smooth animation */
+  transform: rotate(180deg);
+  /* Start with no rotation */
+}
+
+.collapsible-section.active .section-header .collapsible-icon {
+  transform: rotate(0deg);
+  /* Rotate 180 degrees when active */
+}
+
+
+.collapsible {
+  background-color: var(--white);
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  padding-left: 0;
+}
+
+.active,
+.collapsible:hover {
+  background-color: var(--white);
+}
+
+.collapsible:after {
+  content: "˄";
+}
+
+legend.active .collapsible:after {
+  content: "˅";
+}
+
+/* Hide content by default */
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.collapsible-section.active .content {
+  padding: 8px;
+}
+
+/* Display content when the section is active */
+.collapsible-section.active .content {
+  max-height: 1000px;
+  /* Adjust to a suitable value */
+}

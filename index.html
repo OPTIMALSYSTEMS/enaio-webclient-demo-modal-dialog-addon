@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>enaio® webclient demo dashlet</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header-banner">
+        <div class="header-banner-logo">
+          <img src="assets/enaio_blueline_white.png" alt="enaio®" title="enaio®">
+        </div>
+        <div class="header-banner-text">
+          <span>Enterprise Content Management</span>
+          <span>© OPTIMAL SYSTEMS - all rights reserved</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <section class="section-container">
+      <div class="introduction">
+        <p class="section-heading">Demo Modal Dialog Addon</p>
+        <p class="section-text">
+          Das Modal Dialog Addon ist eine neue Funktion, mit der Sie eine externe Website, die auf demselben Server
+          gehostet wird, anzeigen und mit ihr interagieren können. Es erscheint als Popup-Fenster in Ihrer
+          Client-Anwendung und unterstützt die Kommunikation in beide Richtungen. Weitere Einzelheiten zur
+          <a target="_blank" href="https://help.optimal-systems.com/enaio_develop/x/ZwCxB"> Dokumentation. </a>
+        </p>
+      </div>
+
+      <div class="methods">
+        <div>
+          <p class="section-heading">Methoden</p>
+          <p class="section-text">
+            Das Modal Addon umfasst drei verschiedene Methoden.
+          </p>
+        </div>
+      </div>
+
+      <section class=" collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">getEnvironment</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Die Methode getEnvironment stellt grundlegende Informationen zur Umgebung zur Verfügung. Weitere
+            Einzelheiten zur <a target="_blank"
+              href="https://help.optimal-systems.com/enaio_develop/x/QYAHBQ">Dokumentation</a>.
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">getEnvironment()</em>
+          </p>
+          <div class="content-button-container">
+            <div class="button-container">
+              <button id="getEnvironment" class="inner-button">Get Environment Data</button>
+              <button class="clear-button">Clear</button>
+            </div>
+          </div>
+          <div class="result-contianer">
+            <p>
+              Response:
+            </p>
+            <p id="getEnvironmentContainer"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">getFieldValueByInternal</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Die Methode getFieldValueByInternal ermöglicht es, auf Daten von Feldern der Indexdatenmaske, aus welcher
+            der modale Dialog geöffnet wurde, zuzugreifen, sodass diese im modalen Dialog verwendet werden können.
+            Weitere Einzelheiten zur <a target="_blank"
+              href="https://help.optimal-systems.com/enaio_develop/x/dwCxB">Dokumentation</a>.
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">getFieldValueByInternal(internalFieldName)</em>
+          </p>
+          <div class="content-button-container">
+            <div class="fields-container">
+              <div>
+                <label for="internalFieldName">Field Internal Name:&nbsp;</label>
+                <input type="text" name="Internal Field Name" id="internalFieldName">
+              </div>
+            </div>
+            <div class="button-container">
+              <button id="getFieldValueByInternal" class="inner-button">Get Value By Internal Name</button>
+              <button class="clear-button">Clear</button>
+            </div>
+          </div>
+          <div class="result-contianer">
+            <p>
+              Response:
+            </p>
+            <p id="fieldValueByInternalContainer"></p>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">setFieldValueByInternal</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Die Methode setFieldValueByInternal ermöglicht es Daten in Felder der Indexdatenmaske, aus welcher der
+            modale Dialog geöffnet wurde, zu schreiben. Weitere Einzelheiten zur <a target="_blank"
+              href="https://help.optimal-systems.com/enaio_develop/x/IIAHBQ">Dokumentation</a>.
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">setFieldValueByInternal(internalFieldName, value)</em>
+          </p>
+          <div class="content-button-container">
+            <div class="fields-container">
+              <div>
+                <label for="internalSetFieldName">Field Internal Name:&nbsp;</label>
+                <input type="text" name="Internal Set Field Name" id="internalSetFieldName" value="">
+              </div>
+              <div>
+                <label for="internalFieldValue">Value:&nbsp;</label>
+                <input type="text" name="Internal Field Value" id="internalFieldValue" value="">
+              </div>
+            </div>
+            <div class="button-container">
+              <button id="setFieldValueByInternal" class="inner-button">Set Value By Internal</button>
+              <button class="clear-button">Clear</button>
+            </div>
+          </div>
+          <div class="result-contianer">
+            <p>
+              Response:
+            </p>
+            <p id="setFieldValueByInternalContainer"></p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="js/style.js"></script>
+  <script type="module" src="js/library.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/action.js"></script>
+</body>
+
+</html>
