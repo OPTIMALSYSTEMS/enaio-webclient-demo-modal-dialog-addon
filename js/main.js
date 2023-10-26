@@ -1,122 +1,130 @@
-import * as lib from "./library.js";
+// Importing all methods from the library module.
+// This library module likely contains API functions to interact with enaio® web-client.
+import * as lib from "./library/library.js";
 
-// Initial setting up the event listener for "message" type events.
-window.addEventListener("message", handlePostMessage, false);
-
-let webClientOrigin;
-
-/**
- * Handles incoming "messages" from the enaio® webclient.
- * @param {Object} event - The object passed from the enaio® webclient window.
- * @link https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#the_dispatched_event
- */
-function handlePostMessage(event) {
-  webClientOrigin = event.origin;
-
-  const { type, data } = lib.handleWebclientMessage(event.data);
-
-  switch (type) {
-    case "onInit":
-    case "onUpdate":
-      initDashlet(data);
-      console.log(`${type} event data:`, data);
-      break;
-    case "onValueByInternal":
-      console.log(`getValueByInternal method data:`, data);
-      break;
-  }
-
-  return true;
-}
+// =======================
+// MAIN FUNCTIONS
+//
+// These functions are the primary means to access the enaio® API. 
+// They handle fetching, updating, and setting data in the enaio® web-client.
+// =======================
 
 /**
- * Initializes the dashlet with incoming enaio® webclient data.
- * @param {Object} data - enaio® webclient properties for dashlet enrichment.
- */
-function initDashlet(data) {
-  // Logic for initializing the dashlet goes here
-}
-
-/**
- * Fetches the field value by its internal name.
- * @param {string} internalFieldName - The internal name of the index field.
- * @returns {Object} An object containing the field value.
- */
-async function getFieldValueByInternal(internalFieldName = "") {
-  const payload = ["getFieldValueByInternal", JSON.stringify({ internalName: internalFieldName })];
-
-  try {
-    const response = await lib.sendWebclientMessage(payload, webClientOrigin, true);
-    updateContainerContent("fieldValueByInternalContainer", response);
-    console.log(`getFieldValueByInternal() response:`, response);
-  } catch (error) {
-    console.error(`Error in getFieldValueByInternal:`, error);
-  }
-}
-
-/**
- * Sets the field value by its internal name and value.
- * @param {string} internalFieldName - The internal name of the index field.
- * @param {string} internalFieldValue - The internal value of the index field.
- * @returns {Object} An object containing the response.
- */
-async function setFieldValueByInternal(internalFieldName = "", internalFieldValue = "") {
-  const payload = ["setFieldValueByInternal", JSON.stringify({ internalName: internalFieldName, value: internalFieldValue })];
-
-  try {
-    const response = await lib.sendWebclientMessage(payload, webClientOrigin, true);
-    updateContainerContent("setFieldValueByInternalContainer", response);
-    console.log(`setFieldValueByInternal() response:`, response);
-  } catch (error) {
-    console.error(`Error in setFieldValueByInternal:`, error);
-  }
-}
-
-/**
- * Asynchronously retrieves environment data from the enaio® webclient 
- * and updates the content of a designated container with the received data.
+ * Asynchronously retrieves environment data from the enaio® web-client.
+ * Once retrieved, this function updates a designated container 
+ * on the webpage with the received data.
  * 
- * @returns {void} No return value; updates a DOM container and logs the response or error.
+ * Expected use: 
+ * To fetch and display general environment details from enaio® web-client.
  */
 async function getEnvironment() {
-  const payload = ["getEnvironment", ""];
   try {
-    const response = await lib.sendWebclientMessage(payload, webClientOrigin, true);
-    updateContainerContent("getEnvironmentContainer", response);
-    console.log(`getEnvironment() response:`, response);
+    // Fetching environment data from enaio® web-client.
+    const response = await lib.getEnvironment();
+    // Display the fetched data on the webpage and in the console.
+    displayResponse("getEnvironment", response);
   } catch (error) {
-    console.error(`Error in getEnvironment:`, error);
+    // Handle any errors that occur during the fetch.
+    logError("getEnvironment", error);
   }
 }
 
-
 /**
- * Updates the content of a container with formatted JSON data.
- * @param {string} containerId - The ID of the container element.
- * @param {Object} jsonData - The JSON data to display.
+ * Fetches a specific field's value using its internal name.
+ * @param {string} internalFieldName - The unique identifier (internal name) of the index field in enaio® web-client.
+ * 
+ * Expected use:
+ * To fetch specific metadata or field values based on their internal names.
  */
-function updateContainerContent(containerId, jsonData) {
-  const container = document.getElementById(containerId);
-
-  if (container) {
-    container.innerHTML = "";
-    container.appendChild(getFormattedJSON(jsonData));
+async function getFieldValueByInternal(internalFieldName = "") {
+  try {
+    // Fetching field value from enaio® web-client based on the provided internal name.
+    const response = await lib.getFieldValueByInternal({ internalName: internalFieldName });
+    // Display the fetched data on the webpage and in the console.
+    displayResponse("getFieldValueByInternal", response);
+  } catch (error) {
+    // Handle any errors that occur during the fetch.
+    logError("getFieldValueByInternal", error);
   }
 }
 
 /**
- * Returns a formatted representation of JSON data.
- * @param {Object} jsonData - The JSON data to format.
- * @returns {HTMLElement} A preformatted element containing the JSON data.
+ * Sets (or updates) a field's value using its internal name and a specified value.
+ * @param {string} internalFieldName - The unique identifier (internal name) of the index field in enaio® web-client.
+ * @param {string} internalFieldValue - The new value to be set for the specified field.
+ * 
+ * Expected use:
+ * To update or set specific metadata or field values in enaio® web-client.
+ */
+async function setFieldValueByInternal(internalFieldName = "", internalFieldValue = "") {
+  try {
+    // Updating the field value in enaio® web-client based on the provided internal name and value.
+    const response = await lib.setFieldValueByInternal({ internalName: internalFieldName, value: internalFieldValue });
+    // Display the update status on the webpage and in the console.
+    displayResponse("setFieldValueByInternal", response);
+  } catch (error) {
+    // Handle any errors that occur during the update.
+    logError("setFieldValueByInternal", error);
+  }
+}
+
+// =======================
+// SUPPORT FUNCTIONS
+//
+// These functions provide supplementary functionality and are not directly related to accessing the enaio® API.
+// They help in handling the response, formatting data, and managing errors.
+// =======================
+
+/**
+ * Logs errors for the associated function in a standardized format.
+ * @param {string} functionName - The name of the function where the error occurred.
+ * @param {Error} error - The caught error object detailing what went wrong.
+ */
+function logError(functionName, error) {
+  console.error(`Error in ${functionName}:`, error);
+}
+
+/**
+ * Takes response data, logs it to the console, and displays it in a designated container on the webpage.
+ * @param {string} responseName - The name associated with the response, typically the function name.
+ * @param {Object} data - The data (usually JSON) to be displayed.
+ */
+function displayResponse(responseName, data) {
+  // Log the response data to the console.
+  console.log(`${responseName} response:`, data);
+
+  // Locate the designated container on the webpage to display the data.
+  const container = document.getElementById(`${responseName}_response`);
+  if (container) {
+    // Clear any existing data in the container.
+    container.innerHTML = "";
+    // Append the formatted JSON data to the container.
+    container.appendChild(getFormattedJSON(data));
+  }
+}
+
+/**
+ * Converts raw JSON data into a human-readable format and prepares it for display in an HTML container.
+ * @param {Object} jsonData - The raw JSON data to be formatted.
+ * @returns {HTMLElement} A preformatted ('pre') HTML element containing the beautified JSON data.
  */
 function getFormattedJSON(jsonData) {
-  const pre = document.createElement("pre");
-  pre.textContent = JSON.stringify(jsonData, null, 2);
-  return pre;
+  // Create a 'pre' element to display the data in a formatted manner.
+  const preElement = document.createElement("pre");
+  // Set the content of the 'pre' element to the beautified version of the JSON data.
+  preElement.textContent = JSON.stringify(jsonData, null, 2);
+  return preElement;
 }
 
+// =======================
+// EXPORTS
+//
+// These functions are made available for external use. Including them in an HTML file will provide 
+// the ability to interact with the enaio® API directly from the webpage.
+// =======================
+
 export {
+  getEnvironment,
   getFieldValueByInternal,
-  setFieldValueByInternal,
-  getEnvironment
+  setFieldValueByInternal
 };

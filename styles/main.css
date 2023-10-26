@@ -109,7 +109,6 @@ body {
 .content-button-container {
   display: flex;
   flex-direction: column;
-  /* Stack items vertically */
 }
 
 .fields-container {
@@ -121,13 +120,11 @@ body {
 
 .fields-container>div {
   margin-right: 10px;
-  /* Adjust margin as needed */
 }
 
 .button-container {
   display: flex;
   justify-content: flex-start;
-  /* Align button to the right */
 }
 
 .content .content-link {
@@ -213,13 +210,9 @@ legend.active .collapsible:after {
 .collapsible-section {
   margin-bottom: 32px;
   border: 1px solid var(--color-border-defaultNew);
-  /* Add a border to create distinct blocks */
   border-radius: 4px;
-  /* Optional: Rounded corners for aesthetics */
   display: flex;
-  /* Use flexbox to position items */
   flex-direction: column;
-  /* Stack children vertically */
 }
 
 .section-header {
@@ -227,15 +220,10 @@ legend.active .collapsible:after {
   color: var(--white);
   padding: 8px;
   display: flex;
-  /* Use flexbox to position items */
   justify-content: space-between;
-  /* Space between items to move the icon to the right */
   align-items: center;
-  /* Center vertically */
   border-top-left-radius: 4px;
-  /* Match the border radius of the section */
   border-top-right-radius: 4px;
-  /* Match the border radius of the section */
 }
 
 .method-title {
@@ -251,14 +239,11 @@ legend.active .collapsible:after {
 
 .collapsible-section .section-header .collapsible-icon {
   transition: transform 0.3s ease-in-out;
-  /* Add transition for smooth animation */
   transform: rotate(180deg);
-  /* Start with no rotation */
 }
 
 .collapsible-section.active .section-header .collapsible-icon {
   transform: rotate(0deg);
-  /* Rotate 180 degrees when active */
 }
 
 
@@ -297,5 +282,4 @@ legend.active .collapsible:after {
 /* Display content when the section is active */
 .collapsible-section.active .content {
   max-height: 1000px;
-  /* Adjust to a suitable value */
 }
