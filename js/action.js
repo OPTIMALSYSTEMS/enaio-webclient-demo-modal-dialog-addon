@@ -71,9 +71,9 @@ function setupClearButtonActions() {
   const clearButtons = document.querySelectorAll(".clear-button");
   clearButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      clearContainer("fieldValueByInternalContainer");
-      clearContainer("setFieldValueByInternalContainer");
-      clearContainer("getEnvironmentContainer");
+      clearContainer("getFieldValueByInternal_response");
+      clearContainer("setFieldValueByInternal_response");
+      clearContainer("getEnvironment_response");
       clearInputFields("internalFieldName", "internalFieldValue", "internalSetFieldName");
     });
   });
