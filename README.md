@@ -43,3 +43,29 @@ Retrieve particular field values from the currently active index data screen wit
 ### Set Field Value By Internal
 
 The `setFieldValueByInternal()` method promotes advanced interactions. It aids developers in accessing and modifying specific fields on the active index data screen. This method efficiently writes back updated values from the modal dialog to the standard index data mask, ensuring seamless updates and customized processing. Note its specialized compatibility with DMS Masks. Refer to our [documentation](https://help.optimal-systems.com/enaio_develop/x/IIAHBQ) for an in-depth understanding.
+
+### Installation
+
+1. **Clone the Repository**
+    ```sh
+    git clone https://github.com/OPTIMALSYSTEMS/enaio-webclient-demo-modal-dialog-addon.git
+    ```
+
+2. **Navigate to the Project Directory**
+    ```sh
+    cd enaio-webclient-demo-modal-dialog-addon
+    ```
+
+3. **Install Necessary Packages**
+    ```sh
+    npm install
+    ```
+4. **Start The Project**
+    ```sh
+    npm start
+    ```
+Voilà! You're primed to launch the project.
+
+## Usage
+
+The project's foundation lies in vanilla HTML, CSS, and JavaScript. Adherence to the existing code style is appreciated. To visualize live changes during development, we are utilizing a static file server [Live Server](https://www.npmjs.com/package/live-server). With the server active, establish a connection via the enaio® Editor's on-click event for an index mask.
