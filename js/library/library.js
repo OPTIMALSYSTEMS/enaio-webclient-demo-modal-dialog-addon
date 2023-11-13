@@ -133,7 +133,7 @@ async function openHitListByIds(objects, inNewTab = false, title = "", subTitle 
  * Return the value of a field given by its internal name. The return value depends on the field type.
  * See documentation for more information regarding return value.
  *
- * @param jsob A json object with internalName
+ * @param json A json object with internalName
  * @return {Promise<string|Array<Array<string>>>}
  * @link https://help.optimal-systems.com/enaio_develop/display/WEB/getFieldValueByInternal
  * @returns The answer of the client.
@@ -151,7 +151,7 @@ async function getFieldValueByInternal(json) {
  * Set the value of a field given by its internal name in the open index data mask behind the modal dialog.
  * The current value of the index data mask field is completely replaced by the new value.
  *
- * @param jsob A json object with internalName and value.
+ * @param json A json object with internalName and value.
  * @link https://help.optimal-systems.com/enaio_develop/display/WEB/setFieldValueByInternal
  * @returns The answer of the client.
  */
@@ -164,7 +164,10 @@ async function setFieldValueByInternal(json) {
 }
 
 /**
+ * Return the environment values from the client.
  *
+ * @link https://help.optimal-systems.com/enaio_develop/display/WEB/getEnvironment
+ * @returns The environment values from the client.
  */
 async function getEnvironment() {
 	if (!isModalDialog()) {
@@ -172,6 +175,19 @@ async function getEnvironment() {
 	}
 	
 	return sendClientMessage(["getEnvironment", []]);
+}
+
+/**
+ * Closes the modal dialog
+ *
+ * @param buttonScriptReturnValue The numeric value which should be sent to the button script
+ */
+async function closeModalDialog(buttonScriptReturnValue) {
+	if (!isModalDialog()) {
+		throw "Not implemented for dashlets";
+	}
+
+	return sendClientMessage(["closeModalDialog", [buttonScriptReturnValue]]);
 }
 
 /**
@@ -202,6 +218,10 @@ async function sendClientMessage(payload) {
  */
 function jsonObjectToString(jsonObject) {
 	if (!(jsonObject instanceof String) && typeof jsonObject !== "string") {
+		if (jsonObject.value instanceof Object && typeof jsonObject.value === "object") {
+			jsonObject.value = JSON.stringify(jsonObject.value);
+		}
+
 		return JSON.stringify(jsonObject);
 	}
 
@@ -235,6 +255,7 @@ export {
 	getSelectedObjects,
 	refreshHitListObjects,
 	openHitListByIds,
+	closeModalDialog,
 
 	// Methods modal dialogs
 	getFieldValueByInternal,

@@ -109,6 +109,10 @@ body {
 .content-button-container {
   display: flex;
   flex-direction: column;
+
+  .close-button-general{
+    flex-direction: row-reverse;
+  }
 }
 
 .fields-container {

@@ -68,6 +68,24 @@ async function setFieldValueByInternal(internalFieldName = "", internalFieldValu
   }
 }
 
+/**
+ * Sends an event to close the modal dialog with a specific value.
+ *
+ * @param {string} [value=1] - The value to determine the type of close action.
+ *   Defaults to 1 if not provided.
+ *
+ * @throws {Error} If an error occurs while closing the dialog.
+ *
+ */
+async function closeModalDialog(value = 1) {
+  try {
+    await lib.closeModalDialog(value);
+  } catch (error) {
+    logError("closeModalDialog", error);
+    throw error;
+  }
+}
+
 // =======================
 // SUPPORT FUNCTIONS
 //
@@ -126,5 +144,6 @@ function getFormattedJSON(jsonData) {
 export {
   getEnvironment,
   getFieldValueByInternal,
-  setFieldValueByInternal
+  setFieldValueByInternal,
+  closeModalDialog
 };

@@ -31,7 +31,9 @@
       <div class="introduction">
         <p class="section-heading">Demo Modal Dialog Addon</p>
         <p class="section-text">
-          Das Modal Dialog Addon ist eine neue Funktion, mittels derer Sie eine externe Webseite, die unter demselben Hostnamen gehostet ist, in einem modalen Dialog öffnen können. Die Webseite im modalen Dialog kann über eine API mit dem enaio® webclient interagieren und Daten austauschen. Weitere Einzelheiten finden Sie in der
+          Das Modal Dialog Addon ist eine neue Funktion, mittels derer Sie eine externe Webseite, die unter demselben
+          Hostnamen gehostet ist, in einem modalen Dialog öffnen können. Die Webseite im modalen Dialog kann über eine
+          API mit dem enaio® webclient interagieren und Daten austauschen. Weitere Einzelheiten finden Sie in der
           <a target="_blank" href="https://help.optimal-systems.com/enaio_develop/x/ZwCxB"> Dokumentation. </a>
         </p>
       </div>
@@ -156,6 +158,36 @@
         </div>
       </section>
 
+      <!-- Section about closeModalDialog function -->
+      <section class="collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">closeModalDialog</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Die Methode closeModalDialog ermöglicht es, den modalen Dialog zu schließen und weitere Aktionen nach dem Schließen per Script durchführen zu lassen. Weitere Einzelheiten zur <a target="_blank"
+            href="https://help.optimal-systems.com/enaio_develop/x/CYA9BQ">Dokumentation</a>.
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">closeModalDialog(value)</em>
+          </p>
+          <div class="content-button-container">
+            <div class="button-container">
+              <button id="closeModalSave" class="inner-button">Speichern (value = 1)</button>
+              <button id="closeModalCancel" class="inner-button">Abbrechen (value = 2)</button>
+            </div>
+          </div>
+          <br>
+        </div>
+      </section>
+      <!-- A generic close button to close the modal dialog for convenience -->
+      <div class="content-button-container">
+        <div class="button-container close-button-general">
+          <button id="closeModalGeneral" class="inner-button">Close</button>
+        </div>
+      </div>
     </section>
   </main>
 

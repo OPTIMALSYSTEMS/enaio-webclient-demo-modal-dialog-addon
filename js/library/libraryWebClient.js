@@ -77,7 +77,7 @@ function handlePostMessage(event) {
         }
     }
 
-    // "handleWebclientMessage" is a handler function which further processes all incoming "messages" from enaio® webclient (see implimentation details in the library.js file).
+    // "handleWebclientMessage" is a handler function which further processes all incoming "messages" from enaio® webclient (see implementation details in the library.js file).
     // Extract the "type" and "data" properties for further processing.
     // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
     const {type, data} = handleWebclientMessage(event.data);
@@ -97,7 +97,7 @@ function handlePostMessage(event) {
 
 /**
  * Detect the kind of script which is running. There are normal dashlets and
- * modal dialogs. They differ in specific way but we want to make it as smooth
+ * modal dialogs. They differ in specific way, but we want to make it as smooth
  * to the developer as possible.
  *
  * @param data The init data structure from enaio® webclient.

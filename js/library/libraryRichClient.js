@@ -3,9 +3,15 @@
  */
 let onInitCallback = null;
 let onUpdateCallback = null;
-let onInitUpdateRegistered = false;
 let dashletCache = null; // static data from rich client only one time for a dashlet
 let modalDialog = false;
+
+/**
+ * Once the code of the modal dialog is loaded we directly register for the rich client
+ * init functions to not miss them. With them, we decide if we are a modal dialog or not
+ * even if the modal dialog is not registering an init function itself.
+ */
+addEventListener("load", registerOnInitUpdate);
 
 /**
  * Registers an onInit callback which is executed once the dashlet is initialized.
@@ -14,7 +20,6 @@ let modalDialog = false;
  */
 function registerOnInitCallback(callback) {
     onInitCallback = callback;
-    registerOnInitUpdate();
 }
 
 /**
@@ -28,7 +33,6 @@ function registerOnUpdateCallback(callback) {
 	}
 	
     onUpdateCallback = callback;
-    registerOnInitUpdate();
 }
 
 /**
@@ -55,7 +59,7 @@ async function internalOnInitUpdate(data) {
 
 /**
  * Method which is called if the rich client send the initialize event for a dashlet.
- * The initialize event is also fired in case of a update. The rich client only know
+ * The initialize event is also fired in case of an update. The rich client only know
  * one event. We distinguish then. The onInit event is unregistered after first processing.
  * From then on all events are redirected to the update callback. The code inside enrich
  * the rich client data as much as possible to be equal to the webclient data.
@@ -167,17 +171,13 @@ function internalOnInitModalDialog(data) {
  * @private
  */
 function registerOnInitUpdate() {
-    if (onInitUpdateRegistered === false) {
-        window.internalOnInitUpdate = internalOnInitUpdate;
+    window.internalOnInitUpdate = internalOnInitUpdate;
 
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.innerText = "function osDashletInit(data) { window.internalOnInitUpdate(data); } function onInit(data) { window.internalOnInitUpdate(data); }";
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.innerText = "function osDashletInit(data) { window.internalOnInitUpdate(data); } function onInit(data) { window.internalOnInitUpdate(data); }";
 
-        document.getElementsByTagName('head')[0].appendChild(script);
-
-        onInitUpdateRegistered = true;
-    }
+    document.getElementsByTagName('head')[0].appendChild(script);
 }
 
 /**
@@ -199,6 +199,7 @@ async function sendToRichClient(payload) {
         case "getFieldValueByInternal": return getFieldValueByInternal(payload);
 		case "setFieldValueByInternal": return setFieldValueByInternal(payload);
 		case "getEnvironment":			return getEnvironment();
+        case "closeModalDialog":        return closeModalDialog(payload);
     }
 }
 
@@ -298,13 +299,18 @@ async function getEnvironment() {
 }
 
 /**
+ * Documentation see library.js
+ *
+ * @private
+ */
+async function closeModalDialog(payload) {
+    await window.osClient.closeModalDialog(payload[1][0]);
+}
+
+/**
  * Return true if we are running inside a modal dialog. If we are running inside a dashlet the return is false.
  */
 function isModalDialog() {
-	if (!onInitUpdateRegistered) {
-        registerOnInitUpdate();
-    }
-
     return modalDialog;
 }
 
@@ -315,7 +321,6 @@ function reset() {
     modalDialog = false;
     onInitCallback = () => {};
     onUpdateCallback = () => {};
-    onInitUpdateRegistered = false;
     dashletCache = null;
 
     delete window.osClient;

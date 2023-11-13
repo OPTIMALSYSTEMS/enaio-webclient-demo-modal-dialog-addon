@@ -50,8 +50,22 @@ async function setFieldValueByInternal() {
   await action.setFieldValueByInternal(internalFieldName, internalFieldValue);
 }
 
-// Event listeners
+/**
+ * Closes the modal dialog with a specific value.
+ *
+ * @param {number} value - The value to send as a parameter when closing the dialog.
+ * @throws {Error} If an error occurs while closing the dialog.
+ */
+function closeModalDialog(value) {
+  try {
+    action.closeModalDialog(value);
+  } catch (error) {
+    console.error("Error closing dialog:", error);
+    throw error;
+  }
+}
 
+// Event listeners
 document
   .getElementById("getFieldValueByInternal")
   .addEventListener("click", fetchFieldValueByInternal);
@@ -63,6 +77,26 @@ document
 document
   .getElementById("setFieldValueByInternal")
   .addEventListener("click", setFieldValueByInternal);
+
+// Set up event listeners
+document
+  .getElementById("closeModalSave")
+  .addEventListener("click", function () {
+    closeModalDialog(1); // Here we pass the parameter '1'
+  });
+
+document
+  .getElementById("closeModalCancel")
+  .addEventListener("click", function () {
+    closeModalDialog(2); // Here we pass the parameter '2' 
+  });
+
+// A generic close button for the modal dialog for convenience
+document
+  .getElementById("closeModalGeneral")
+  .addEventListener("click", function () {
+    closeModalDialog(); // Here we pass the no parameter and the dialog will be closed with default value '1'
+  });
 
 /**
  * Clears content and input values when a clear button is clicked.
