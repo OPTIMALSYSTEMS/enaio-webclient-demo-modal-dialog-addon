@@ -130,9 +130,32 @@ function getFormattedJSON(jsonData) {
   // Create a 'pre' element to display the data in a formatted manner.
   const preElement = document.createElement("pre");
   // Set the content of the 'pre' element to the beautified version of the JSON data.
-  preElement.textContent = JSON.stringify(jsonData, null, 2);
+  preElement.textContent = JSON.stringify(
+    jsonData,
+    (key, value) => (value === undefined ? "undefined" : value),
+    2
+  );
   return preElement;
 }
+
+/**
+ * Handles the initialization event from the enaio® web-client.
+ * This function is triggered when the enaio® web-client sends the 'onInit' event.
+ * It processes the initial data received from the web-client, typically containing details
+ * about the selected entry, and then displays this data using the `displayResponse` function.
+ *
+ * @param {Object} data - The initialization data sent from the enaio® web-client, usually includes details about the selected entry.
+ * 
+ */
+function onInit(data) {
+  const selectedEntry = data?.selectedEntry || {};
+  displayResponse("onInit", selectedEntry);
+}
+
+// Registering the 'onInit' callback function with the enaio® web-client.
+// This setup ensures that when the web-client initializes, the 'onInit' function is called
+// with the initial data provided by the web-client.
+lib.registerOnInitCallback(onInit);
 
 // =======================
 // EXPORTS
