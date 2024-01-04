@@ -148,8 +148,7 @@ function getFormattedJSON(jsonData) {
  * 
  */
 function onInit(data) {
-  const selectedEntry = data?.selectedEntry || {};
-  displayResponse("onInit", selectedEntry);
+  displayResponse("onInit", data || {});
 }
 
 // Registering the 'onInit' callback function with the enaio® web-client.
