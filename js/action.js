@@ -51,6 +51,16 @@ async function setFieldValueByInternal() {
 }
 
 /**
+ * Sets the caption of the dialog.
+ *
+ * This function retrieves the caption from an HTML element with the ID "captionName" and sets it as the dialog's caption.
+ */
+async function setDialogCaption() {
+  const newCaption = document.getElementById("captionName").value;
+  await action.setDialogCaption(newCaption);
+}
+
+/**
  * Closes the modal dialog with a specific value.
  *
  * @param {number} value - The value to send as a parameter when closing the dialog.
@@ -78,7 +88,11 @@ document
   .getElementById("setFieldValueByInternal")
   .addEventListener("click", setFieldValueByInternal);
 
-// Set up event listeners
+document
+  .getElementById("setDialogCaption")
+  .addEventListener("click", setDialogCaption);
+
+// Event listeners for closeModalDialog
 document
   .getElementById("closeModalSave")
   .addEventListener("click", function () {
@@ -98,6 +112,39 @@ document
     closeModalDialog(); // Here we pass the no parameter and the dialog will be closed with default value '1'
   });
 
+
+
+
+/**
+ * This function attempts to execute the onCanCancelMethod from the action object with a given value.
+ *
+ * @param {any} value - The value to be passed to the onCanCancelMethod of the action object.
+ * @throws {Error} If an error occurs during the execution of the onCanCancelMethod, it logs the error and rethrows it.
+ */
+function onCanCancelMethod(value) {
+  try {
+    action.onCanCancelMethod(value);
+  } catch (error) {
+    console.error("Error onCanCancel method:", error);
+    throw error;
+  }
+}
+
+
+// Event listeners for onCanCancel
+document
+  .getElementById("onCanCancelEnable")
+  .addEventListener("click", function () {
+    onCanCancelMethod(1); // Here we pass the parameter '1'
+  });
+
+document
+  .getElementById("onCanCancelDisable")
+  .addEventListener("click", function () {
+    onCanCancelMethod(2); // Here we pass the parameter '2' 
+  });
+
+
 /**
  * Clears content and input values when a clear button is clicked.
  */
@@ -108,7 +155,7 @@ function setupClearButtonActions() {
       clearContainer("getFieldValueByInternal_response");
       clearContainer("setFieldValueByInternal_response");
       clearContainer("getEnvironment_response");
-      clearInputFields("internalFieldName", "internalFieldValue", "internalSetFieldName");
+      clearInputFields("internalFieldName", "internalFieldValue", "internalSetFieldName", "captionName");
     });
   });
 }

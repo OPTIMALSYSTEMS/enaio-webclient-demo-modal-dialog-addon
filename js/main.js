@@ -49,6 +49,23 @@ async function getFieldValueByInternal(internalFieldName = "") {
 }
 
 /**
+ * Sets the caption of the modal dialog using the provided value.
+ *
+ * @param {string} value - The caption to be set for the modal dialog. Defaults to an empty string if no value is provided.
+ * @throws {Error} If an error occurs during the process, it logs the error with the function name.
+ */
+async function setDialogCaption(value = "") {
+  try {
+    // Fetching field value from enaio® web-client based on the provided internal name.
+    await lib.setDialogCaption(value);
+    // Display the fetched data on the webpage and in the console.
+  } catch (error) {
+    // Handle any errors that occur during the fetch.
+    logError("setDialogCaption", error);
+  }
+}
+
+/**
  * Sets (or updates) a field's value using its internal name and a specified value.
  * @param {string} internalFieldName - The unique identifier (internal name) of the index field in enaio® web-client.
  * @param {string} internalFieldValue - The new value to be set for the specified field.
@@ -156,6 +173,23 @@ function onInit(data) {
 // with the initial data provided by the web-client.
 lib.registerOnInitCallback(onInit);
 
+
+// This value is used to control the behavior of the ESC key event in the iframe.
+let onCanCancelValue = 1;
+
+// Register a function to handle the ESC key event.
+// Instead of passing a getter, we're directly passing the value itself.
+lib.registerOnCanCancelCallback(() => onCanCancelValue);
+
+/**
+ * Sets the value for onCanCancel.
+ *
+ * @param {number} [value=1] - The value to set for onCanCancel.
+ */
+function onCanCancelMethod(value = 1) {
+  onCanCancelValue = value;
+}
+
 // =======================
 // EXPORTS
 //
@@ -167,5 +201,7 @@ export {
   getEnvironment,
   getFieldValueByInternal,
   setFieldValueByInternal,
-  closeModalDialog
+  closeModalDialog,
+  onCanCancelMethod,
+  setDialogCaption
 };

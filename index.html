@@ -207,6 +207,66 @@
           <br>
         </div>
       </section>
+
+      <!-- Section about onCanCancel function -->
+      <section class="collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">onCanCancel</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Das Ereignis onCanCancel dient als Registrierungsmechanismus, der während der Initialisierungsphase aufgerufen werden sollte. Sie ermöglicht die Entscheidung, ob der modale Dialog beim Auftreten eines ESC-Tastenereignisses innerhalb eines modalen Dialog-Add-ons beendet oder seine Anzeige beibehalten werden soll. Weitere Einzelheiten zur <a target="_blank"
+              href="https://help.optimal-systems.com/enaio_develop/x/-oCiBQ">Dokumentation</a>.
+              
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">lib.registerOnCanCancelCallback(() => value)</em>
+          </p>
+          <div class="content-button-container">
+            <p>Klicken Sie auf eine der Schaltflächen, um den Wert zuzuweisen, und drücken Sie dann die ESC-Taste, um das Verhalten zu beobachten.</p>
+            <div class="button-container">
+              <button id="onCanCancelEnable" class="inner-button">ESC-Tastenereignis einschalten (value = 1)</button>
+              <button id="onCanCancelDisable" class="inner-button">ESC-Tastenereignis deaktivieren (value = 2)</button>
+            </div>
+          </div>
+          <br>
+        </div>
+      </section>
+
+      <!-- Section about setDialogCaption method -->
+      <section class="collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">setDialogCaption</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Die Methode setDialogCaption ermöglicht Entwicklern, den Titel des Dialogfelds dynamisch anzupassen, selbst nachdem das modale Dialogfeld geöffnet wurde. Dies bietet eine höhere Flexibilität bei der Gestaltung der Benutzererfahrung im Kontext des Projekts. 
+            Weitere Einzelheiten zur <a target="_blank"
+              href="https://help.optimal-systems.com/enaio_develop/x/QYGiBQ">Dokumentation</a>.
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">setDialogCaption(value)</em>
+          </p>
+          <div class="content-button-container">
+            <div class="fields-container">
+              <div>
+                <label for="captionName">New Caption:&nbsp;</label>
+                <input type="text" name="New Caption" id="captionName">
+              </div>
+            </div>
+            <div class="button-container">
+              <button id="setDialogCaption" class="inner-button">Set Dialog Caption</button>
+              <button class="clear-button">Clear</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       <!-- A generic close button to close the modal dialog for convenience -->
       <div class="content-button-container">
         <div class="button-container close-button-general">
