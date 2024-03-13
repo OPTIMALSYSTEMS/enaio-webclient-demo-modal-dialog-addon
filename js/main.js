@@ -1,6 +1,9 @@
 // Importing all methods from the library module.
 // This library module likely contains API functions to interact with enaio® web-client.
-import * as lib from "./library/library.js";
+// TODO: use  ES6 imports
+// import * as lib from "@enaio-client/communication-library";
+
+import * as lib from '../../node_modules/@enaio-client/communication-library/dist/module.js';
 
 // =======================
 // MAIN FUNCTIONS
