@@ -20,6 +20,14 @@ These modal dialogs function like a webpage inside an iframe, inclusive of the i
 
 To bridge communication between a modal dialog and the enaio® webclient, we offer the Modal Dialog API. It's enriched with special events and methods that enhance information exchange and interaction.
 
+## Abstraction Library for Dashlet Communication (new)
+
+Abstraction Library is a critical component of this project designed to facilitate seamless communication between the modal dialog and both the enaio® webclient and enaio® richclient. This library, available as an npm package accessible [here](https://www.npmjs.com/package/@enaio-client/communication-library), serves as a foundational bridge, enhancing interaction between the modal dialog and the enaio® platforms.
+
+### Purpose
+
+The Abstraction Library is primarily intended to simplify and streamline the process of communication between the modal dialog  and both the enaio® webclient and enaio® richclient. By adopting this library, the integration of the modal dialog  into both platforms becomes a cohesive and straightforward endeavor, all while maintaining a unified codebase.
+
 ## Events
 
 The enaio® webclient operates based on events. Here's a snapshot of the available events:
