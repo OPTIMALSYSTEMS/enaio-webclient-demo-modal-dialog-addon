@@ -10,7 +10,7 @@
         "directory": "/"
     },
     "scripts": {
-        "start": "live-server ./src --port=5500 -o"
+        "start": "live-server . --port=5500 -o"
     },
     "keywords": [
         "web",
