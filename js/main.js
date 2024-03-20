@@ -1,9 +1,10 @@
 // Importing all methods from the library module.
 // This library module likely contains API functions to interact with enaio® web-client.
-// TODO: use  ES6 imports
-// import * as lib from "@enaio-client/communication-library";
 
-import * as lib from '../../node_modules/@enaio-client/communication-library/dist/module.js';
+
+// Below is only for demo purposes. Github Pages only supports static site hosting.
+// In a production environment, import from the npm library as explained here https://www.npmjs.com/package/@enaio-client/communication-library
+import * as lib from './module.js';
 
 // =======================
 // MAIN FUNCTIONS
