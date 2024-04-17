@@ -35,6 +35,14 @@ async function fetchFieldValueByInternal() {
 }
 
 /**
+ * Fetches a field value by its name for Workflow.
+ */
+async function fetchWfFieldValueByInternal() {
+  const internalFieldName = document.getElementById("wfVariableName").value;
+  await action.getWorkflowVariableByName(internalFieldName);
+}
+
+/**
  * Fetches the environment data.
  */
 async function fetchEnvironment() {
@@ -80,6 +88,10 @@ document
   .getElementById("getFieldValueByInternal")
   .addEventListener("click", fetchFieldValueByInternal);
 
+document
+  .getElementById("getWorkflowVariableByName")
+  .addEventListener("click", fetchWfFieldValueByInternal);
+  
 document
   .getElementById("getEnvironment")
   .addEventListener("click", fetchEnvironment);
@@ -153,9 +165,10 @@ function setupClearButtonActions() {
   clearButtons.forEach((button) => {
     button.addEventListener("click", () => {
       clearContainer("getFieldValueByInternal_response");
+      clearContainer("getWorkflowVariableByName_response");
       clearContainer("setFieldValueByInternal_response");
       clearContainer("getEnvironment_response");
-      clearInputFields("internalFieldName", "internalFieldValue", "internalSetFieldName", "captionName");
+      clearInputFields("internalFieldName", "internalFieldValue", "internalSetFieldName", "captionName", "wfVariableName");
     });
   });
 }

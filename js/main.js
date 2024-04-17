@@ -1,7 +1,5 @@
 // Importing all methods from the library module.
 // This library module likely contains API functions to interact with enaio® web-client.
-
-
 // Below is only for demo purposes. Github Pages only supports static site hosting.
 // In a production environment, import from the npm library as explained here https://www.npmjs.com/package/@enaio-client/communication-library
 import * as lib from './module.js';
@@ -49,6 +47,25 @@ async function getFieldValueByInternal(internalFieldName = "") {
   } catch (error) {
     // Handle any errors that occur during the fetch.
     logError("getFieldValueByInternal", error);
+  }
+}
+
+/**
+ * Fetches a specific workflow variable's value using its name.
+ * @param {string} name - The name of the workflow variable in enaio® web-client.
+ * 
+ * Expected use:
+ * To retrieve values of specific workflow variables based on their names.
+ */
+async function getWorkflowVariableByName(name = "") {
+  try {
+    // Fetching field value from enaio® web-client based on the provided name.
+    const response = await lib.getWorkflowVariableByName({ name: name });
+    // Display the fetched data on the webpage and in the console.
+    displayResponse("getWorkflowVariableByName", response);
+  } catch (error) {
+    // Handle any errors that occur during the fetch.
+    logError("getWorkflowVariableByName", error);
   }
 }
 
@@ -207,5 +224,6 @@ export {
   setFieldValueByInternal,
   closeModalDialog,
   onCanCancelMethod,
-  setDialogCaption
+  setDialogCaption,
+  getWorkflowVariableByName
 };

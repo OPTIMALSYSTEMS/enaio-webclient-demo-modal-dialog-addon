@@ -266,6 +266,42 @@
         </div>
       </section>
 
+      
+      <!-- Section about getWorkflowVariableByName method -->
+      <section class="collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">getWorkflowVariableByName</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Die Methode getWorkflowVariableByName ermöglicht den Zugriff auf Daten von Workflow-Variablen in der Workflow-Maske, aus der der modale Dialog geöffnet wurde. Dies ermöglicht die Verwendung dieser Variablen innerhalb des modalen Dialogs. Weitere Informationen entnehmen Sie bitte der Dokumentation <a target="_blank"
+            href="https://help.optimal-systems.com/enaio_develop/x/o4OiBQ">Dokumentation</a>.
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">getWorkflowVariableByName(name)</em>
+          </p>
+          <div class="content-button-container">
+            <div class="fields-container">
+              <div>
+                <label for="wfVariableName">Variable Name:&nbsp;</label>
+                <input type="text" name="Field Name" id="wfVariableName">
+              </div>
+            </div>
+            <div class="button-container">
+              <button id="getWorkflowVariableByName" class="inner-button">Get Value By Name</button>
+              <button class="clear-button">Clear</button>
+            </div>
+          </div>
+          <div class="result-contianer">
+            <p>
+              Response:
+            </p>
+            <p id="getWorkflowVariableByName_response"></p>
+          </div>
+        </div>
+      </section>
 
       <!-- A generic close button to close the modal dialog for convenience -->
       <div class="content-button-container">
