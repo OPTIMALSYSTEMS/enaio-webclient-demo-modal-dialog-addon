@@ -34,8 +34,5 @@
     ],
     "engines": {
         "node": ">=14.0.0"
-    },
-    "dependencies": {
-        "@enaio-client/communication-library": "^1.2.101"
     }
 }

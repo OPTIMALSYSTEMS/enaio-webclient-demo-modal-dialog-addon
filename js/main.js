@@ -107,6 +107,28 @@ async function setFieldValueByInternal(internalFieldName = "", internalFieldValu
 }
 
 /**
+ * Sets (or updates) a workflow variable's value using its name and a specified value.
+ * @param {string} variableName - The unique identifier (name) of the workflow variable in enaio® web-client.
+ * @param {string} variableValue - The new value to be set for the specified variable.
+ * 
+ * @throws {Error} If an error occurs during the update, it logs the error with the function name.
+ * 
+ * Expected use:
+ * To update or set specific workflow variables in enaio® web-client.
+ */
+async function setWorkflowVariableByName(name = "", value = "") {
+  try {
+    // Updating the variable value in enaio® web-client based on the provided internal name and value.
+    const response = await lib.setWorkflowVariableByName({ name, value });
+    // Display the update status on the webpage and in the console.
+    displayResponse("setWorkflowVariableByName", response);
+  } catch (error) {
+    // Handle any errors that occur during the update.
+    logError("setWorkflowVariableByName", error);
+  }
+}
+
+/**
  * Sends an event to close the modal dialog with a specific value.
  *
  * @param {string} [value=1] - The value to determine the type of close action.
@@ -225,5 +247,6 @@ export {
   closeModalDialog,
   onCanCancelMethod,
   setDialogCaption,
-  getWorkflowVariableByName
+  getWorkflowVariableByName,
+  setWorkflowVariableByName,
 };

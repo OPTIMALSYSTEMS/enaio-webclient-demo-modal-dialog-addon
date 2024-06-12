@@ -303,6 +303,46 @@
         </div>
       </section>
 
+      <!-- Section about setWorkflowVariableByName method -->
+      <section class="collapsible-section">
+        <header class="section-header">
+          <h2 class="method-title">setWorkflowVariableByName</h2>
+          <div class="collapsible-icon">˄</div>
+        </header>
+        <div class="content">
+          <p>
+            Die Methode setWorkflowVariableByName ermöglicht es, Daten in Workflow-Variablen der Workflow-Maske, aus der der modale Dialog geöffnet wurde, zu schreiben. Dies ermöglicht die Aktualisierung dieser Variablen innerhalb des modalen Dialogs. Weitere Informationen entnehmen Sie bitte der Dokumentation <a
+              target="_blank" href="https://help.optimal-systems.com/enaio_develop/x/o4OiBQ">Dokumentation</a>.
+          </p>
+          </p>
+          <p>
+            Syntax: <em class="bolder italic">setWorkflowVariableByName(name, value)</em>
+          </p>
+          <div class="content-button-container">
+            <div class="fields-container">
+              <div>
+                <label for="wfSetVariableName">Variable Name:&nbsp;</label>
+                <input type="text" name="Variable Name" id="wfSetVariableName">
+              </div>
+              <div>
+                <label for="wfSetVariableValue">Value:&nbsp;</label>
+                <input type="text" name="Variable Value" id="wfSetVariableValue" value="">
+              </div>
+            </div>
+            <div class="button-container">
+              <button id="setWorkflowVariableByName" class="inner-button">Set Value By Name</button>
+              <button class="clear-button">Clear</button>
+            </div>
+          </div>
+          <div class="result-contianer">
+            <p>
+              Response:
+            </p>
+            <p id="setWorkflowVariableByName_response"></p>
+          </div>
+        </div>
+      </section>
+
       <!-- A generic close button to close the modal dialog for convenience -->
       <div class="content-button-container">
         <div class="button-container close-button-general">

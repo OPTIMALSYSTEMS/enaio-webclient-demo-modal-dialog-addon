@@ -59,6 +59,15 @@ async function setFieldValueByInternal() {
 }
 
 /**
+ * Sets value of a workflow variable by its name.
+ */
+async function setWorkflowVariableByName() {
+  const variableName = document.getElementById("wfSetVariableName").value;
+  const variableValue = document.getElementById("wfSetVariableValue").value;
+  await action.setWorkflowVariableByName(variableName, variableValue);
+}
+
+/**
  * Sets the caption of the dialog.
  *
  * This function retrieves the caption from an HTML element with the ID "captionName" and sets it as the dialog's caption.
@@ -91,7 +100,7 @@ document
 document
   .getElementById("getWorkflowVariableByName")
   .addEventListener("click", fetchWfFieldValueByInternal);
-  
+
 document
   .getElementById("getEnvironment")
   .addEventListener("click", fetchEnvironment);
@@ -99,6 +108,10 @@ document
 document
   .getElementById("setFieldValueByInternal")
   .addEventListener("click", setFieldValueByInternal);
+
+document
+  .getElementById("setWorkflowVariableByName")
+  .addEventListener("click", setWorkflowVariableByName);
 
 document
   .getElementById("setDialogCaption")
@@ -166,9 +179,10 @@ function setupClearButtonActions() {
     button.addEventListener("click", () => {
       clearContainer("getFieldValueByInternal_response");
       clearContainer("getWorkflowVariableByName_response");
+      clearContainer("setWorkflowVariableByName_response");
       clearContainer("setFieldValueByInternal_response");
       clearContainer("getEnvironment_response");
-      clearInputFields("internalFieldName", "internalFieldValue", "internalSetFieldName", "captionName", "wfVariableName");
+      clearInputFields("internalFieldName", "internalFieldValue", "internalSetFieldName", "captionName", "wfVariableName", "wfSetVariableName", "wfSetVariableValue");
     });
   });
 }
