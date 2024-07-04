@@ -50,6 +50,8 @@ The enaio® webclient provides a comprehensive set of API methods for modal dial
 
 - **getWorkflowVariableByName(name)**: Enables the modal dialog to query and retrieve data from specific workflow mask variables, facilitating a deeper integration with the underlying business processes. For further details, refer to the [getWorkflowVariableByName method documentation](https://help.optimal-systems.com/enaio_develop/x/o4OiBQ).
 
+- **setWorkflowVariableByName(nameOfTheWorkflowVariable, valueForTheWorkflowVariable)**: Enables values to be written to workflow variables for the current workflow activity and therefore also to the respective linked field on the workflow screen, refer to the [setWorkflowVariableByName method documentation](https://help.optimal-systems.com/enaio_develop/display/WEB/setWorkflowVariableByName).
+
 
 ## Installation
 
