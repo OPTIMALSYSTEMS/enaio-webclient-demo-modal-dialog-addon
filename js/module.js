@@ -203,7 +203,7 @@ let $ba1d324185edb72e$var$modalDialog = false;
         $ba1d324185edb72e$var$dashletCache = {};
         $ba1d324185edb72e$var$dashletCache.dashletCaption = window.osClient.osjxGetDashletCaption();
         $ba1d324185edb72e$var$dashletCache.uri = window.osClient.osjxGetDashletURL();
-        $ba1d324185edb72e$var$dashletCache.languageGuiSelected = window.osClient.osjxGetEnvironment(35);
+        $ba1d324185edb72e$var$dashletCache.languageGuiSelected = window.osClient.osjxGetEnvironment(24) || "de";
         $ba1d324185edb72e$var$dashletCache.languageObjectDefinition = window.osClient.osjxGetEnvironment(33);
         $ba1d324185edb72e$var$dashletCache.wfOrgId = window.osClient.osjxGetEnvironment(19);
         $ba1d324185edb72e$var$dashletCache.mail = window.osClient.osjxGetEnvironment(16);
@@ -507,6 +507,7 @@ let $ba1d324185edb72e$var$modalDialog = false;
 }
 
 
+const $49fc9f948b8cbadc$var$version = "2.0.1-rc5";
 /**
  * Registers an onInit callback which is executed once the dashlet is initialized.
  * 
@@ -515,8 +516,7 @@ let $ba1d324185edb72e$var$modalDialog = false;
  * Use "*" to allow every target origin. Example: https://enaio.company-name.de.
  * Ref: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
  */ function $49fc9f948b8cbadc$export$8f1480d0136598a3(onInitCallback, trustedOrigin = "*") {
-    //TODO: Automate the insertion of the version number
-    console.log(`Current Communication library version number: 2.0.1-rc2`);
+    console.log(`Current Communication library version number: ${$49fc9f948b8cbadc$var$version}`);
     if (window.osClient) $ba1d324185edb72e$export$8f1480d0136598a3(onInitCallback);
     else $464c878707ea8907$export$8f1480d0136598a3(onInitCallback, trustedOrigin);
 }
