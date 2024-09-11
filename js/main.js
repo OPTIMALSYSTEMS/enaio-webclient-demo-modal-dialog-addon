@@ -2,7 +2,7 @@
 // This library module likely contains API functions to interact with enaio® web-client.
 // Below is only for demo purposes. Github Pages only supports static site hosting.
 // In a production environment, import from the npm library as explained here https://www.npmjs.com/package/@enaio-client/communication-library
-import * as lib from './module.js';
+import * as lib from './module.mjs';
 
 // =======================
 // MAIN FUNCTIONS
