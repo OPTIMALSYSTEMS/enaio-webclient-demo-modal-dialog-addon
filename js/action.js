@@ -92,6 +92,18 @@ function closeModalDialog(value) {
   }
 }
 
+/**
+ * Resets the session timeout using the exported resetSessionTimeout method.
+ */
+async function resetSessionTimeout() {
+  try {
+    await action.resetSessionTimeout();
+  } catch (error) {
+    console.error("Error resetting session timeout:", error);
+    throw error;
+  }
+}
+
 // Event listeners
 document
   .getElementById("getFieldValueByInternal")
@@ -137,8 +149,9 @@ document
     closeModalDialog(); // Here we pass the no parameter and the dialog will be closed with default value '1'
   });
 
-
-
+document
+  .getElementById("resetSessionTimeout")
+  .addEventListener("click", resetSessionTimeout);
 
 /**
  * This function attempts to execute the onCanCancelMethod from the action object with a given value.

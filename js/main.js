@@ -146,6 +146,19 @@ async function closeModalDialog(value = 1) {
   }
 }
 
+/**
+ * Asynchronously resets the session timeout in the enaio® web-client.
+ */
+async function resetSessionTimeout() {
+  try {
+    const response = await lib.resetSessionTimeout();
+    displayResponse("resetSessionTimeout", response);
+  } catch (error) {
+    logError("resetSessionTimeout", error);
+    throw error;
+  }
+}
+
 // =======================
 // SUPPORT FUNCTIONS
 //
@@ -249,4 +262,5 @@ export {
   setDialogCaption,
   getWorkflowVariableByName,
   setWorkflowVariableByName,
+  resetSessionTimeout
 };
